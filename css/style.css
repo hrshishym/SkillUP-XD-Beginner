@@ -1,0 +1,303 @@
+/* Base */
+:root {
+    --inner-width  : 1200px;
+    --inner-padding: 24px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+
+    font-size: 100%;
+    font-size: clamp(10px, 1.282051282051282vw, 16px);
+}
+
+body {
+    font-family: 'メイリオ', 'Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    margin: 0;
+}
+
+img {
+    width         : 100%;
+    height        : auto;
+    vertical-align: bottom;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-size: unset;
+    font-weight: unset;
+}
+
+a {
+    text-decoration: none;
+    color          : inherit;
+}
+
+ul {
+    margin: 0ch;
+}
+
+section {
+    scroll-margin-top: 8.5625rem;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    padding: 0;
+}
+
+/* ***************** */
+/* Component */
+.c-section-heading {
+    font-size  : 2.25rem;
+    font-family: 'Montserrat', 'メイリオ', 'Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align : center;
+    line-height: calc(44/36);
+}
+
+.c-section-heading span {
+    display    : block;
+    font-size  : 0.875rem;
+    font-weight: 400;
+    margin-top : 0.67rem;
+}
+
+.c-more-button {
+    font-family     : 'Montserrat', sans-serif;
+    font-size       : 1.5rem;
+    text-transform  : uppercase;
+    border-radius   : 0;
+    border          : solid 1px black;
+    background-color: transparent;
+    position        : relative;
+    z-index         : 2;
+}
+
+.c-more-button::before {
+    position        : absolute;
+    content         : "";
+    width           : 100%;
+    height          : 100%;
+    background-color: #c7c8c0;
+    top             : 0;
+    left            : 0;
+    z-index         : -1;
+    transition      : opacity .3s;
+    opacity         : 0;
+}
+
+.c-more-button:hover::before {
+    opacity   : 1;
+    transition: opacity .3s;
+}
+
+.c-more-button a {
+    display: inline-block;
+    padding: 0.9375rem 3.75rem 0.88rem;
+}
+
+/* ***************** */
+/* Header */
+.l-header {
+    top             : 0;
+    position        : fixed;
+    width           : 100%;
+    background-color: white;
+    padding-top     : 2.9375rem;
+    padding-bottom  : 3.625rem;
+    z-index: 99;
+    box-shadow: 0 5px 5px rgba(128, 128, 128, .5);
+}
+
+.l-header__inner {
+    margin-right: auto;
+    margin-left : auto;
+    max-width   : calc(var(--inner-width) + var(--inner-padding) * 2);
+    padding     : 0 var(--inner-padding);
+
+}
+
+.l-header__content {
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-between;
+}
+
+.l-header__logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size  : 1.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.l-header__nav-items {
+    display       : flex;
+    flex-direction: row;
+    column-gap    : 2.8rem;
+}
+
+.l-header__nav-item {
+    list-style : none;
+    font-family: 'Montserrat', sans-serif;
+    font-size  : 1.625rem;
+    font-weight: 700;
+    letter-spacing: 0.10rem;
+}
+
+.l-header__nav-item a:hover {
+    text-decoration: underline;
+}
+
+/* ***************** */
+/* First View */
+.p-fv {
+    margin-top         : 8.5625rem;
+    width              : 100%;
+    height             : 51.4375rem;
+    height: clamp(25rem, 7.37500rem + 88.12500vw, 51.4375rem); /* From 400px@320px To 823@800px */
+    background-image   : url(../img/fv.jpg);
+    background-size    : cover;
+    background-position: center;
+    background-repeat  : no-repeat;
+    text-align: center;
+    padding-top: clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem); /* From 100px@320px To 298@800px */
+}
+
+.p-fv__heading {
+    font-family: 'Courier New', Courier, monospace;
+    font-size  : 5rem;
+    font-weight: 700;
+    letter-spacing: 0.4rem;
+    color      : white;
+}
+
+/* ***************** */
+/* Service */
+.p-service {
+    background-color: #f6f6f6;
+    padding-top     : 3.75rem;
+    padding-bottom  : 6.25rem;
+}
+
+.p-service__inner {
+    max-width   : calc(var(--inner-width) + var(--inner-padding) * 2);
+    padding     : 0 var(--inner-padding);
+    margin-right: auto;
+    margin-left : auto;
+}
+
+.p-service__cards {
+    margin-top    : 4rem;
+    display       : flex;
+    flex-direction: row;
+    column-gap    : 1.875rem;
+}
+
+.p-service__card {
+    background-color: #fff;
+    border-radius   : 4.625rem;
+    padding         : 1.875rem 2.5rem 4.625rem;
+}
+
+.p-service__image {
+    text-align: center;
+}
+
+.p-service__image img {
+    max-width: 12.5rem;
+    width    : 100%;
+}
+
+.p-service__name {
+    margin-top: 0.625rem;
+    text-align: center;
+    font-size : 1.1875rem;
+    font-weight: 700;
+    letter-spacing: 0.06rem;
+}
+
+.p-service__name--fullbleed {
+    margin-right: -2.5rem;
+    margin-left : -2.5rem;
+}
+
+.p-service__description {
+    margin-top: 0.75rem;
+    letter-spacing: 0.02rem;
+}
+
+.p-service__more {
+    margin-top: 5.625rem;
+    text-align: center;
+}
+
+/* ***************** */
+/* Works */
+.p-works {
+    padding-top   : 4.9375rem;
+    padding-bottom: 3.125rem;
+}
+
+.p-works__inner {
+    max-width   : calc(var(--inner-width) + var(--inner-padding) * 2);
+    padding     : 0 var(--inner-padding);
+    margin-right: auto;
+    margin-left : auto;
+}
+
+.p-works__cards {
+    display       : grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap    : 1.875rem;
+    margin-top    : 4.6875rem;
+}
+
+.p-works__image img {
+    object-fit  : cover;
+    aspect-ratio: 380 / 269;
+}
+
+.p-works__content {
+    margin-top: 1.25rem;
+}
+
+.p-works__name {
+    margin-top: 0.25rem;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: 0.06rem;
+}
+
+.p-works__description {
+    margin-top: 1rem;
+    letter-spacing: 0.02rem;
+}
+
+.p-works__more {
+    margin-top: 8.125rem;
+    text-align: center;
+}
+
+/* ***************** */
+/* Footer */
+
+.l-footer {
+    font-size: 0.875rem;
+    background-color: #a7a4a4;
+    text-align      : center;
+    padding-top     : 2.5rem;
+    padding-bottom  : 2.5rem;
+    letter-spacing: 0.1rem;
+}
