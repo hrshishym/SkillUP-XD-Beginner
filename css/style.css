@@ -1,8 +1,13 @@
 /* Base */
 :root {
-    --inner-width  : 1200px;
-    --inner-padding: 24px;
-    --breakpoint   : 768px;
+    --inner-width   : 1200px;
+    --inner-padding : 24px;
+    --breakpoint    : 768px;
+    --breakpoint-min: 375px;
+    --inner-width   : 75rem;
+    --inner-padding : 1.5rem;
+    --breakpoint    : 48rem;
+    --breakpoint-min: 23.4375rem;
 }
 
 * {
@@ -194,25 +199,28 @@ button {
 .l-header__nav {
     position        : fixed;
     background-color: white;
-    top             : -30vh;
+    top             : -45vh;
     left            : 0;
-    height          : 30vh;
+    height          : 40vh;
     width           : 100%;
     transition      : top .3s;
     /* SP版はnavにドロップシャドウ */
     box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
 }
+
 /* SP版はtopの操作でメニュー欄を移動 */
 .l-header__nav.js-active {
     top       : 0;
     transition: top .3s;
 }
+
 /* PC版はボックスシャドウは無し */
 @media (min-width: 768px) {
     .l-header__nav {
         box-shadow: unset;
     }
 }
+
 /* PC版は表示状態に設定 */
 @media (min-width: 768px) {
     .l-header__nav {
@@ -223,6 +231,10 @@ button {
     }
 }
 
+/* メニューは
+ * SP版：縦並び
+ * PC版：横並び
+ */
 .l-header__nav-items {
     display        : flex;
     flex-direction : column;
@@ -230,6 +242,7 @@ button {
     height         : 100%;
     column-gap     : 2.8rem;
     row-gap        : 2.8rem;
+    padding-left   : 4rem;
 }
 
 @media (min-width: 768px) {
@@ -240,6 +253,7 @@ button {
     }
 }
 
+/* メニューの各アイテム */
 .l-header__nav-item {
     list-style    : none;
     font-family   : 'Montserrat', sans-serif;
@@ -247,20 +261,22 @@ button {
     font-weight   : 700;
     letter-spacing: 0.10rem;
     /* SP版はメニューopen時に右から左に向かってフェードイン */
-    position: relative;
-    left: 10rem;
-    opacity: 0;
-    transition: left .3s .2s, opacity .3s .2s;
+    position      : relative;
+    left          : 10rem;
+    opacity       : 0;
+    transition    : left .3s .2s, opacity .3s .2s;
 }
 
+/* PC版はメニューの位置は固定 */
 @media (min-width: 768px) {
     .l-header__nav-item {
-        left: 0;
+        left   : 0;
         opacity: 1;
     }
 }
+
 .js-active .l-header__nav-item {
-    left: 0;
+    left   : 0;
     opacity: 1;
 }
 
@@ -268,12 +284,13 @@ button {
     text-decoration: underline;
 }
 
+/* ハンバーガーメニュー */
 /*ボタン外側*/
 .l-header__openbtn {
     /*ボタン内側の基点となるためrelativeを指定。
 追従するナビゲーションの場合はfixed+top、rightといった位置をセットで指定*/
     position     : relative;
-    background   : #57a2c7;
+    background   : #fff;
     cursor       : pointer;
     width        : 3rem;
     height       : 3rem;
@@ -289,7 +306,7 @@ button {
     left         : 25%;
     height       : 3px;
     border-radius: 2px;
-    background   : #fff;
+    background   : #888;
     width        : 50%;
 }
 
@@ -334,26 +351,45 @@ button {
 /* ***************** */
 /* First View */
 .p-fv {
-    margin-top         : 8.5625rem;
-    width              : 100%;
-    height             : 51.4375rem;
-    height             : clamp(25rem, 7.37500rem + 88.12500vw, 51.4375rem);
+    margin-top           : 6rem;
+    width                : 100%;
+    height               : 70vh;
     /* From 400px@320px To 823@800px */
-    background-image   : url(../img/fv.jpg);
-    background-size    : cover;
-    background-position: center;
-    background-repeat  : no-repeat;
-    text-align         : center;
-    padding-top        : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem);
+    background-image     : url(../img/fv.jpg);
+    background-size      : cover;
+    background-position  : center;
+    background-repeat    : no-repeat;
+    /* SP版は背景画像を固定 */
+    background-attachment: fixed;
+    text-align           : center;
+    padding-top          : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem);
     /* From 100px@320px To 298@800px */
+    padding-top          : 20vh;
+}
+
+@media (min-width: 768px) {
+    .p-fv {
+        margin-top           : 8.5625rem;
+        height               : 51.4375rem;
+        height               : clamp(25rem, 7.37500rem + 88.12500vw, 51.4375rem);
+        padding-top          : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem);
+        /* PC版は背景画像をスクロールさせる */
+        background-attachment: scroll;
+    }
 }
 
 .p-fv__heading {
     font-family   : 'Courier New', Courier, monospace;
-    font-size     : 5rem;
+    font-size     : 3rem;
     font-weight   : 700;
     letter-spacing: 0.4rem;
     color         : white;
+}
+
+@media (min-width: 768px) {
+    .p-fv__heading {
+        font-size: 5rem;
+    }
 }
 
 /* ***************** */
@@ -361,7 +397,14 @@ button {
 .p-service {
     background-color: #f6f6f6;
     padding-top     : 3.75rem;
-    padding-bottom  : 6.25rem;
+    /* SP版はセクション間のpaddingを小さくする */
+    padding-bottom  : 5rem;
+}
+
+@media (min-width: 768px) {
+    .p-service {
+        padding-bottom: 6.25rem;
+    }
 }
 
 .p-service__inner {
@@ -371,17 +414,33 @@ button {
     margin-left : auto;
 }
 
+/* カード
+ * SP版：縦並び
+ * PC版：横並び
+ */
 .p-service__cards {
     margin-top    : 4rem;
     display       : flex;
-    flex-direction: row;
+    flex-direction: column;
     column-gap    : 1.875rem;
+    row-gap       : 1.875rem;
+    align-items   : center;
+}
+
+@media (min-width: 768px) {
+    .p-service__cards {
+        flex-direction: row;
+        width         : unset;
+    }
 }
 
 .p-service__card {
     background-color: #fff;
     border-radius   : 4.625rem;
     padding         : 1.875rem 2.5rem 4.625rem;
+    /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+    width           : 70vw;
+    min-width       : 20.4375rem;
 }
 
 .p-service__image {
@@ -412,15 +471,28 @@ button {
 }
 
 .p-service__more {
-    margin-top: 5.625rem;
+    margin-top: 3rem;
     text-align: center;
+}
+
+@media (min-width: 768px) {
+    .p-service__more {
+        margin-top: 5.625rem;
+    }
 }
 
 /* ***************** */
 /* Works */
 .p-works {
     padding-top   : 4.9375rem;
-    padding-bottom: 3.125rem;
+    /* SP版はセクション間のpaddingを小さくする */
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    .p-works {
+        padding-bottom: 3.125rem;
+    }
 }
 
 .p-works__inner {
@@ -430,11 +502,37 @@ button {
     margin-left : auto;
 }
 
+/* カード
+ * SP版：縦並び
+ * PC版：横並び
+ */
 .p-works__cards {
     display              : grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows   : 1fr 1fr 1fr;
+    grid-template-columns: auto;
     column-gap           : 1.875rem;
+    row-gap              : 4rem;
     margin-top           : 4.6875rem;
+}
+
+@media (min-width: 768px) {
+    .p-works__cards {
+        grid-template-rows   : auto;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.p-works__card {
+    /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+    width       : 70vw;
+    min-width   : 20.4375rem;
+    justify-self: center;
+}
+
+@media (min-width: 768px) {
+    .p-works__card {
+        width: unset;
+    }
 }
 
 .p-works__image img {
@@ -451,6 +549,12 @@ button {
     font-size     : 1.1875rem;
     font-weight   : 700;
     letter-spacing: 0.06rem;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .p-works__name {
+        text-align: unset;
+    }
 }
 
 .p-works__description {
@@ -459,8 +563,14 @@ button {
 }
 
 .p-works__more {
-    margin-top: 8.125rem;
+    margin-top: 3rem;
     text-align: center;
+}
+
+@media (min-width: 768px) {
+    .p-works__more {
+        margin-top: 8.125rem;
+    }
 }
 
 /* ***************** */
@@ -473,4 +583,11 @@ button {
     padding-top     : 2.5rem;
     padding-bottom  : 2.5rem;
     letter-spacing  : 0.1rem;
+}
+
+/* Utility */
+@media (min-width: 768px) {
+    .u-sp-only {
+        display: none;
+    }
 }
