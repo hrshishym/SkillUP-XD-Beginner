@@ -56,10 +56,10 @@ h3 {
 
 a {
     text-decoration: none;
-    color          : inherit;
+    color          : #000;
 }
 
-ul {
+ul {    
     margin: 0ch;
 }
 
