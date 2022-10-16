@@ -360,7 +360,7 @@ button {
     background-position  : center;
     background-repeat    : no-repeat;
     /* SP版は背景画像を固定 */
-    background-attachment: fixed;
+    /* background-attachment: fixed; */ /* iOS Safariのバグのため中止 */
     text-align           : center;
     padding-top          : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem);
     /* From 100px@320px To 298@800px */
