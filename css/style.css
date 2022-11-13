@@ -107,10 +107,9 @@ button {
     z-index         : 99;
 }
 
-
-
 /* ***************** */
 /* Component */
+/* セクションタイトル */
 .c-section-heading {
     font-size     : 1.5rem;
     font-family   : 'Montserrat', 'メイリオ', 'Meiryo', 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
@@ -120,13 +119,11 @@ button {
     line-height   : calc(44/36);
 
 }
-
 @media (min-width: 768px) {
     .c-section-heading {
         font-size: 2.25rem;
     }
 }
-
 .c-section-heading span {
     display    : block;
     font-size  : 0.875rem;
@@ -134,6 +131,54 @@ button {
     margin-top : 0.67rem;
 }
 
+/* カードタイプ1 */
+.c-cards1 {
+    display: flex;
+    flex-direction: column;
+    column-gap: 1.875rem;
+    row-gap: 1.875rem;
+}
+@media (min-width: 768px) {
+    .c-cards1 {
+        flex-direction: row;
+    }
+}
+.c-cards1__item {
+    margin-right: auto;
+    margin-left: auto;
+    /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+    width           : 70vw;
+    min-width       : 20.4375rem;
+}
+
+.c-card1 {
+    background-color: #fff;
+    border-radius: 4.625rem;
+    padding         : 1.875rem 2.5rem 4.625rem;
+}
+.c-card1__image {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    max-width: 12.5rem;
+}
+.c-card1__heading {
+    margin-top    : 0.625rem;
+    text-align    : center;
+    font-size     : 1.1875rem;
+    font-weight   : 700;
+    letter-spacing: 0.06rem;
+}
+.c-card1__heading--fullbleed {
+    margin-right: -2.5rem;
+    margin-left : -2.5rem;
+}
+.c-card1__text {
+    margin-top    : 0.75rem;
+    letter-spacing: 0.02rem;
+}
+
+/* moreボタン */
 .c-more-button {
     font-family     : 'Montserrat', sans-serif;
     font-size       : 1.5rem;
@@ -426,67 +471,12 @@ button {
     }
 }
 
-.p-service__inner {
-    max-width   : calc(var(--inner-width) + var(--inner-padding) * 2);
-    padding     : 0 var(--inner-padding);
-    margin-right: auto;
-    margin-left : auto;
-}
-
 /* カード
  * SP版：縦並び
  * PC版：横並び
  */
 .p-service__cards {
     margin-top    : 4rem;
-    display       : flex;
-    flex-direction: column;
-    column-gap    : 1.875rem;
-    row-gap       : 1.875rem;
-    align-items   : center;
-}
-
-@media (min-width: 768px) {
-    .p-service__cards {
-        flex-direction: row;
-        width         : unset;
-    }
-}
-
-.p-service__card {
-    background-color: #fff;
-    border-radius   : 4.625rem;
-    padding         : 1.875rem 2.5rem 4.625rem;
-    /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
-    width           : 70vw;
-    min-width       : 20.4375rem;
-}
-
-.p-service__image {
-    text-align: center;
-}
-
-.p-service__image img {
-    max-width: 12.5rem;
-    width    : 100%;
-}
-
-.p-service__name {
-    margin-top    : 0.625rem;
-    text-align    : center;
-    font-size     : 1.1875rem;
-    font-weight   : 700;
-    letter-spacing: 0.06rem;
-}
-
-.p-service__name--fullbleed {
-    margin-right: -2.5rem;
-    margin-left : -2.5rem;
-}
-
-.p-service__description {
-    margin-top    : 0.75rem;
-    letter-spacing: 0.02rem;
 }
 
 .p-service__more {
