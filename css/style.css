@@ -1,7 +1,8 @@
 /* Base */
 :root {
-    --inner-width   : 1200px;
+    --max-width   : 1200px;
     --inner-padding : 24px;
+    --inner-width   : 1248px;
     --breakpoint    : 768px;
     --breakpoint-min: 375px;
     --inner-width   : 75rem;
@@ -82,6 +83,33 @@ button {
 }
 
 /* ***************** */
+/* Layout */
+
+/* Inner width */
+/* 最大コンテンツ幅を規定 */
+.l-inner {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 78rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+/* Header */
+/* 最上部に固定し、スクロールに追従 
+ * SP版では上下のpaddingを小さくし、本文の表示領域を確保
+ */
+.l-header {
+    top             : 0;
+    position        : fixed;
+    width           : 100%;
+    background-color: white;
+    z-index         : 99;
+}
+
+
+
+/* ***************** */
 /* Component */
 .c-section-heading {
     font-size     : 1.5rem;
@@ -141,41 +169,25 @@ button {
 }
 
 /* ***************** */
-/* Header */
-
-/* 最上部に固定し、スクロールに追従 
- * SP版では上下のpaddingを小さくし、本文の表示領域を確保
- */
-.l-header {
-    top             : 0;
-    position        : fixed;
-    width           : 100%;
-    background-color: white;
+/* Header(Project) */
+.p-header {
     padding-top     : 1.5rem;
     padding-bottom  : 1.5rem;
-    z-index         : 99;
+    background-color: white;
+    transition      : top .3s;
     box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
 }
 
 /* PC版では上下のpaddingをカンプ通りの値に設定 */
 @media (min-width: 768px) {
-    .l-header {
+    .p-header {
         padding-top   : 2.9375rem;
         padding-bottom: 3.625rem;
     }
 }
 
-/* 最大コンテンツ幅を規定 */
-.l-header__inner {
-    margin-right: auto;
-    margin-left : auto;
-    max-width   : calc(var(--inner-width) + var(--inner-padding) * 2);
-    padding     : 0 var(--inner-padding);
-
-}
-
 /* ヘッダの内容は横並び */
-.l-header__content {
+.p-header__content {
     display        : flex;
     flex-direction : row;
     justify-content: space-between;
@@ -183,7 +195,7 @@ button {
 }
 
 /* ロゴ */
-.l-header__logo {
+.p-header__logo {
     font-family   : 'Montserrat', sans-serif;
     font-size     : 1.625rem;
     font-weight   : 700;
@@ -191,39 +203,43 @@ button {
     text-transform: uppercase;
 }
 
+/* ***************** */
 /* ナビゲーション
  * SP版では上部側に退避させ非表示
  * メニューボタンが押されたらスライドダウン
  * 高さも固定(vh)
  */
-.l-header__nav {
+.p-header__nav {
     position        : fixed;
-    background-color: white;
     top             : -45vh;
     left            : 0;
     height          : 40vh;
     width           : 100%;
-    transition      : top .3s;
-    /* SP版はnavにドロップシャドウ */
-    box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
 }
 
 /* SP版はtopの操作でメニュー欄を移動 */
-.l-header__nav.js-active {
+.p-header__nav.js-active {
     top       : 0;
     transition: top .3s;
 }
 
+/* ナビゲーション */
+.p-nav {
+    background-color: #fff;
+    /* SP版はnavにドロップシャドウ */
+    box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
+}
+
 /* PC版はボックスシャドウは無し */
 @media (min-width: 768px) {
-    .l-header__nav {
+    .p-nav {
         box-shadow: unset;
     }
 }
 
 /* PC版は表示状態に設定 */
 @media (min-width: 768px) {
-    .l-header__nav {
+    .p-nav {
         display : block;
         position: static;
         height  : unset;
@@ -235,7 +251,7 @@ button {
  * SP版：縦並び
  * PC版：横並び
  */
-.l-header__nav-items {
+.p-nav__items {
     display        : flex;
     flex-direction : column;
     justify-content: center;
@@ -246,7 +262,7 @@ button {
 }
 
 @media (min-width: 768px) {
-    .l-header__nav-items {
+    .p-nav__items {
         flex-direction : row;
         height         : unset;
         justify-content: normal;
@@ -254,7 +270,7 @@ button {
 }
 
 /* メニューの各アイテム */
-.l-header__nav-item {
+.p-nav__item {
     list-style    : none;
     font-family   : 'Montserrat', sans-serif;
     font-size     : 1.625rem;
@@ -265,28 +281,29 @@ button {
     left          : 10rem;
     opacity       : 0;
     transition    : left .3s .2s, opacity .3s .2s;
+    text-transform: uppercase;
 }
 
 /* PC版はメニューの位置は固定 */
 @media (min-width: 768px) {
-    .l-header__nav-item {
+    .p-nav__item {
         left   : 0;
         opacity: 1;
     }
 }
 
-.js-active .l-header__nav-item {
+.p-nav__item a:hover {
+    text-decoration: underline;
+}
+
+.js-active .p-nav__item {
     left   : 0;
     opacity: 1;
 }
 
-.l-header__nav-item a:hover {
-    text-decoration: underline;
-}
-
 /* ハンバーガーメニュー */
 /*ボタン外側*/
-.l-header__openbtn {
+.p-header__openbtn {
     /*ボタン内側の基点となるためrelativeを指定。
 追従するナビゲーションの場合はfixed+top、rightといった位置をセットで指定*/
     position     : relative;
@@ -298,7 +315,7 @@ button {
 }
 
 /*ボタン内側*/
-.l-header__openbtn span {
+.p-header__openbtn span {
     display      : inline-block;
     transition   : all .4s;
     /*アニメーションの設定*/
@@ -310,32 +327,32 @@ button {
     width        : 50%;
 }
 
-.l-header__openbtn span:nth-of-type(1) {
+.p-header__openbtn span:nth-of-type(1) {
     top: calc(30% - 1.5px);
 }
 
-.l-header__openbtn span:nth-of-type(2) {
+.p-header__openbtn span:nth-of-type(2) {
     top: calc(50% - 1.5px);
 }
 
-.l-header__openbtn span:nth-of-type(3) {
+.p-header__openbtn span:nth-of-type(3) {
     top: calc(70% - 1.5px);
 }
 
 /*activeクラスが付与されると線が回転して×に*/
-.l-header__openbtn.js-active span:nth-of-type(1) {
+.p-header__openbtn.js-active span:nth-of-type(1) {
     top      : calc(50% - 1.5px);
     left     : calc(25%);
     transform: rotate(-45deg);
     width    : 50%;
 }
 
-.l-header__openbtn.js-active span:nth-of-type(2) {
+.p-header__openbtn.js-active span:nth-of-type(2) {
     opacity: 0;
     /*真ん中の線は透過*/
 }
 
-.l-header__openbtn.js-active span:nth-of-type(3) {
+.p-header__openbtn.js-active span:nth-of-type(3) {
     top      : calc(50% - 1.5px);
     left     : calc(25%);
     transform: rotate(45deg);
@@ -343,10 +360,12 @@ button {
 }
 
 @media (min-width: 768px) {
-    .l-header__openbtn {
+    .p-header__openbtn {
         display: none;
     }
 }
+
+
 
 /* ***************** */
 /* First View */
