@@ -216,6 +216,11 @@ button {
     /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
     width       : 70vw;
     justify-self: center;
+    transition: opacity .3s;
+}
+
+.c-cards2__item:hover {
+    opacity: .7;
 }
 
 @media (min-width: 768px) {
@@ -265,6 +270,7 @@ button {
     background-color: transparent;
     position        : relative;
     z-index         : 2;
+    padding: 0.9375rem 3.75rem 0.88rem;
 }
 
 .c-more-button::before {
@@ -287,7 +293,6 @@ button {
 
 .c-more-button a {
     display: inline-block;
-    padding: 0.9375rem 3.75rem 0.88rem;
 }
 
 /* ***************** */
