@@ -100,24 +100,24 @@ button {
  * SP版では上下のpaddingを小さくし、本文の表示領域を確保
  */
 .l-header {
-    top             : 0;
-    position        : fixed;
-    width           : 100%;
+    top     : 0;
+    position: fixed;
+    width   : 100%;
 }
 
 /* First View */
 .l-fv {
-    margin-top              : 6rem;
-    width                   : 100%;
-    height                  : 70vh;
+    margin-top: 6rem;
+    width     : 100%;
+    height    : 70vh;
     /* From 400px@320px To 823@800px */
 }
 
 @media (min-width: 768px) {
     .l-fv {
-        margin-top           : 8.5625rem;
-        height               : 51.4375rem;
-        height               : clamp(25rem, 7.37500rem + 88.12500vw, 51.4375rem);
+        margin-top: 8.5625rem;
+        height    : 51.4375rem;
+        height    : clamp(25rem, 7.37500rem + 88.12500vw, 51.4375rem);
     }
 }
 
@@ -216,7 +216,7 @@ button {
     /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
     width       : 70vw;
     justify-self: center;
-    transition: opacity .3s;
+    transition  : opacity .3s;
 }
 
 .c-cards2__item:hover {
@@ -262,6 +262,7 @@ button {
 
 /* moreボタン */
 .c-more-button {
+    display         : inline-block;
     font-family     : 'Montserrat', sans-serif;
     font-size       : 1.5rem;
     text-transform  : uppercase;
@@ -270,7 +271,7 @@ button {
     background-color: transparent;
     position        : relative;
     z-index         : 2;
-    padding: 0.9375rem 3.75rem 0.88rem;
+    padding         : 0.9375rem 3.75rem 0.88rem;
 }
 
 .c-more-button::before {
