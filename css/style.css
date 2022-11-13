@@ -1,6 +1,6 @@
 /* Base */
 :root {
-    --max-width   : 1200px;
+    --max-width     : 1200px;
     --inner-padding : 24px;
     --inner-width   : 1248px;
     --breakpoint    : 768px;
@@ -60,7 +60,7 @@ a {
     color          : #000;
 }
 
-ul {    
+ul {
     margin: 0ch;
 }
 
@@ -88,11 +88,11 @@ button {
 /* Inner width */
 /* 最大コンテンツ幅を規定 */
 .l-inner {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 78rem;
+    margin-right : auto;
+    margin-left  : auto;
+    max-width    : 78rem;
     padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-left : 1.5rem;
 }
 
 /* Header */
@@ -107,6 +107,8 @@ button {
     z-index         : 99;
 }
 
+/* Footer */
+
 /* ***************** */
 /* Component */
 /* セクションタイトル */
@@ -117,13 +119,14 @@ button {
     text-transform: uppercase;
     text-align    : center;
     line-height   : calc(44/36);
-
 }
+
 @media (min-width: 768px) {
     .c-section-heading {
         font-size: 2.25rem;
     }
 }
+
 .c-section-heading span {
     display    : block;
     font-size  : 0.875rem;
@@ -133,35 +136,38 @@ button {
 
 /* カードタイプ1 */
 .c-cards1 {
-    display: flex;
+    display       : flex;
     flex-direction: column;
-    column-gap: 1.875rem;
-    row-gap: 1.875rem;
+    column-gap    : 2.5%;
+    row-gap       : 1.875rem;
 }
+
 @media (min-width: 768px) {
     .c-cards1 {
         flex-direction: row;
     }
 }
+
 .c-cards1__item {
     margin-right: auto;
-    margin-left: auto;
+    margin-left : auto;
     /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
-    width           : 70vw;
-    min-width       : 20.4375rem;
+    width       : 70vw;
 }
 
 .c-card1 {
     background-color: #fff;
-    border-radius: 4.625rem;
+    border-radius   : 4.625rem;
     padding         : 1.875rem 2.5rem 4.625rem;
 }
+
 .c-card1__image {
     margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-    max-width: 12.5rem;
+    margin-left : auto;
+    text-align  : center;
+    max-width   : 12.5rem;
 }
+
 .c-card1__heading {
     margin-top    : 0.625rem;
     text-align    : center;
@@ -169,13 +175,72 @@ button {
     font-weight   : 700;
     letter-spacing: 0.06rem;
 }
+
 .c-card1__heading--fullbleed {
     margin-right: -2.5rem;
     margin-left : -2.5rem;
 }
+
 .c-card1__text {
     margin-top    : 0.75rem;
     letter-spacing: 0.02rem;
+}
+
+/* カードタイプ2 */
+.c-cards2 {
+    display              : grid;
+    grid-template-columns: 1fr;
+    column-gap           : 2.5%;
+    row-gap              : 4rem;
+}
+
+@media (min-width: 768px) {
+    .c-cards2 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.c-cards2__item {
+    /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+    width       : 70vw;
+    justify-self: center;
+}
+
+@media (min-width: 768px) {
+    .c-cards2__item {
+        width: unset;
+    }
+}
+
+.c-card2 {}
+
+.c-card2__image img {
+    object-fit  : cover;
+    aspect-ratio: 380 / 269;
+}
+
+.c-card2__content {
+    margin-top: 1.25rem;
+}
+
+.c-card2__heading {
+    margin-top    : 0.25rem;
+    font-size     : 1.1875rem;
+    font-weight   : 700;
+    letter-spacing: 0.06rem;
+    text-align    : center;
+}
+
+@media (min-width: 768px) {
+    .c-card2__heading {
+        text-align: unset;
+    }
+}
+
+.c-card2__description {
+    margin-top    : 1rem;
+    letter-spacing: 0.02rem;
+
 }
 
 /* moreボタン */
@@ -255,11 +320,11 @@ button {
  * 高さも固定(vh)
  */
 .p-header__nav {
-    position        : fixed;
-    top             : -45vh;
-    left            : 0;
-    height          : 40vh;
-    width           : 100%;
+    position: fixed;
+    top     : -45vh;
+    left    : 0;
+    height  : 40vh;
+    width   : 100%;
 }
 
 /* SP版はtopの操作でメニュー欄を移動 */
@@ -415,20 +480,21 @@ button {
 /* ***************** */
 /* First View */
 .p-fv {
-    margin-top           : 6rem;
-    width                : 100%;
-    height               : 70vh;
+    margin-top              : 6rem;
+    width                   : 100%;
+    height                  : 70vh;
     /* From 400px@320px To 823@800px */
-    background-image     : url(../img/fv.jpg);
-    background-size      : cover;
-    background-position  : center;
-    background-repeat    : no-repeat;
+    background-image        : url(../img/fv.jpg);
+    background-size         : cover;
+    background-position     : center;
+    background-repeat       : no-repeat;
     /* SP版は背景画像を固定 */
-    /* background-attachment: fixed; */ /* iOS Safariのバグのため中止 */
-    text-align           : center;
-    padding-top          : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem);
+    /* background-attachment: fixed; */
+    /* iOS Safariのバグのため中止 */
+    text-align              : center;
+    padding-top             : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem);
     /* From 100px@320px To 298@800px */
-    padding-top          : 20vh;
+    padding-top             : 20vh;
 }
 
 @media (min-width: 768px) {
@@ -476,7 +542,7 @@ button {
  * PC版：横並び
  */
 .p-service__cards {
-    margin-top    : 4rem;
+    margin-top: 4rem;
 }
 
 .p-service__more {
@@ -504,31 +570,12 @@ button {
     }
 }
 
-.p-works__inner {
-    max-width   : calc(var(--inner-width) + var(--inner-padding) * 2);
-    padding     : 0 var(--inner-padding);
-    margin-right: auto;
-    margin-left : auto;
-}
-
 /* カード
  * SP版：縦並び
  * PC版：横並び
  */
 .p-works__cards {
-    display              : grid;
-    grid-template-rows   : 1fr 1fr 1fr;
-    grid-template-columns: auto;
-    column-gap           : 1.875rem;
-    row-gap              : 4rem;
-    margin-top           : 4.6875rem;
-}
-
-@media (min-width: 768px) {
-    .p-works__cards {
-        grid-template-rows   : auto;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+    margin-top: 4.6875rem;
 }
 
 .p-works__card {
@@ -542,33 +589,6 @@ button {
     .p-works__card {
         width: unset;
     }
-}
-
-.p-works__image img {
-    object-fit  : cover;
-    aspect-ratio: 380 / 269;
-}
-
-.p-works__content {
-    margin-top: 1.25rem;
-}
-
-.p-works__name {
-    margin-top    : 0.25rem;
-    font-size     : 1.1875rem;
-    font-weight   : 700;
-    letter-spacing: 0.06rem;
-    text-align: center;
-}
-@media (min-width: 768px) {
-    .p-works__name {
-        text-align: unset;
-    }
-}
-
-.p-works__description {
-    margin-top    : 1rem;
-    letter-spacing: 0.02rem;
 }
 
 .p-works__more {
@@ -585,7 +605,7 @@ button {
 /* ***************** */
 /* Footer */
 
-.l-footer {
+.p-footer {
     font-size       : 0.875rem;
     background-color: #a7a4a4;
     text-align      : center;
